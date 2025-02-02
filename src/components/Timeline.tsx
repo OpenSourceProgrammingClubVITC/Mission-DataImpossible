@@ -5,8 +5,8 @@ const Timeline = () => {
     { time: '9:00 AM', title: 'Event Starts', progress: 20, position: 'left' },
     { time: '9:00-10:00 AM', title: 'Workshop on EDA', progress: 40, position: 'right' },
     { time: '10:00-1:00 PM', title: 'CTH', progress: 60, position: 'left' },
-    { time: '2:00-9:00 PM', title: 'Hackathon', progress: 80, position: 'right' },
-    { time: '9:00 PM', title: 'Final Submission', progress: 100, position: 'center' }
+    { time: '2:00-11:59 PM', title: 'Hackathon', progress: 80, position: 'right' },
+    { time: '11:59 PM', title: 'Final Submission', progress: 100, position: 'center' }
   ];
 
   const getProgressColor = (progress: number) => {
