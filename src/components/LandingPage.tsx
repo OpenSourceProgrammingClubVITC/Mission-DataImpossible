@@ -172,7 +172,7 @@ export default function LandingPage() {
         <div className="flex flex-col sm:flex-row justify-evenly items-center px-5 mb-6 text-white">
           <div className="text-center sm:text-left text-xl sm:text-2xl mb-6 sm:mb-0 hover:scale-105 transition-transform">
             <p>📅 4/2/25</p>
-            <p>🕐 9am - 6pm</p>
+            <p>🕐 9am - 11:59pm</p>
           </div>
           <div className="w-[15rem] sm:w-[2px] h-[2px] sm:h-[15rem] bg-gradient-to-r from-transparent via-white to-transparent my-6 sm:my-0 sm:mx-5" />
           <div className="text-center text-xl sm:text-2xl mb-6 sm:mb-0">
@@ -191,7 +191,7 @@ export default function LandingPage() {
           </div>
           <div className="w-[15rem] sm:w-[2px] h-[2px] sm:h-[15rem] bg-gradient-to-r from-transparent via-white to-transparent my-6 sm:my-0 sm:mx-5" />
           <div className="text-center sm:text-left text-xl sm:text-2xl hover:scale-105 transition-transform">
-            <p>📍 kamaraj auditorium</p>
+            <p>📍 Kamaraj Auditorium</p>
             <p>AB3, VIT Chennai</p>
           </div>
         </div>
