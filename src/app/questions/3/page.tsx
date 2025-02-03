@@ -1,10 +1,46 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { TextRevealCardPreview } from '@/components/TextRevealCardPreview';
 import { SVGMaskEffectDemo } from '@/components/SVGMaskEffectDemo';
-import { Input } from '@/components/input';
 
+
+export function Input() {
+ const [answer, setAnswer] = useState('');
+ const [error, setError] = useState('');
+ const router = useRouter();
+ const correctAnswer = process.env.NEXT_PUBLIC_CORRECT_ANSWERR;
+
+ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+   e.preventDefault();
+   
+   if (answer.trim().toLowerCase() === correctAnswer?.toLowerCase()) {
+     router.push('/questionnn');
+   } else {
+     setError('Incorrect answer');
+   }
+ };
+
+ return (
+   <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto">
+     <input 
+       type="text"
+       value={answer}
+       onChange={(e) => setAnswer(e.target.value)}
+       className="w-full p-2 border border-gray-300 rounded-lg"
+       placeholder="Enter your answer"
+     />
+     {error && <p className="text-red-500 mt-2">{error}</p>}
+     <button 
+       type="submit" 
+       className="mt-2 w-full p-2 bg-blue-500 text-white  rounded-lg"
+     >
+       Submit
+     </button>
+   </form>
+ );
+ }
 export default function Question() {
   return (
     <div className="bg-gray-900 min-h-screen flex flex-col items-center justify-center p-4 space-y-6">
@@ -20,7 +56,7 @@ export default function Question() {
           transition={{ delay: 0.2, duration: 0.5 }}
           className="text-4xl font-bold mb-6 text-white"
         >
-          You're Crushing It! 🚀
+          You are Crushing It! 🚀
         </motion.h1>
         
         <motion.div

@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Timeline from './Timeline';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import FAQ from "@/components/faq";
+import Image from 'next/image';
 const roboto = IBM_Plex_Mono({
   weight: '400',
   subsets: ['latin'],
@@ -159,9 +160,9 @@ export default function LandingPage() {
           <h2 className="text-4xl sm:text-6xl text-white mb-8 tracking-wider animate-glow">Data Impossible</h2>
           <p className="text-xl sm:text-2xl text-white opacity-90 mb-10">AI/ML data set event</p>
           <div className="flex justify-center items-center gap-5 mt-8 hover:scale-105 transition-transform">
-            <img src="/ras.png" alt="RAS Logo" className="w-8 h-8 sm:w-12 sm:h-12" />
+            <Image src="/ras.png" alt="RAS Logo" className="w-8 h-8 sm:w-12 sm:h-12" />
             <span className="text-white text-xl sm:text-2xl opacity-80">X</span>
-            <img src="/ospc.png" alt="OSPC Logo" className="w-12 h-12 sm:w-16 sm:h-16" />
+            <Image  src="/ospc.png" alt="OSPC Logo" className="w-12 h-12 sm:w-16 sm:h-16" />
           </div>
         </div>
       </div>
@@ -214,7 +215,7 @@ export default function LandingPage() {
             hover:border-[rgba(255,77,140,0.6)]"
         >
           <div className="relative">
-            <img 
+            <Image 
               src="/logo_light.png" 
               alt="Channelise" 
               className="w-[200px] h-[90px] sm:w-[300px] sm:h-[120px] p-4 left-8

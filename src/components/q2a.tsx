@@ -2,6 +2,7 @@
 import { questionTwoB } from "@/server/actions";
 import { useState } from "react";
 import { JigsawPuzzle } from "react-jigsaw-puzzle/lib";
+
 import "react-jigsaw-puzzle/lib/jigsaw-puzzle.css";
 
 export default function SecondQuestion() {
