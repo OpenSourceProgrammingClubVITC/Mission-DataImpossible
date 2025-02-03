@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
       allowedOrigins: undefined,
     }, // If you're using Server Actions
   },
+  images: {
+    remotePatterns: [{ hostname: "n7jr836wex.ufs.sh" }]
+  }
 };
 
 export default nextConfig;
