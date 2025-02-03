@@ -110,7 +110,7 @@ export default function LandingPage() {
         <meta name="description" content="AI/ML data set event" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+                                                                      
       <RegistrationModal 
         isOpen={isRegistrationModalOpen}
         onClose={() => setIsRegistrationModalOpen(false)}
