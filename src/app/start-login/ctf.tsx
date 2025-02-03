@@ -1,13 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 export default function CTFChallenge() {
   const router = useRouter();
@@ -26,18 +20,20 @@ export default function CTFChallenge() {
   const checkAnswer = async (e: React.FormEvent) => {
     e.preventDefault();
     
-   
-
     const normalizedAnswer = answer.trim().toLowerCase();
 
     try {
-      const { data, error } = await supabase
-        .from('ctf_answers')
-        .select('correct_answer')
-        .eq('id', 1)
-        .single();
+      const response = await fetch('/api/verify-answer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ answer: normalizedAnswer }),
+      });
 
-      if (!error && data && normalizedAnswer === data.correct_answer.toLowerCase()) {
+      const result = await response.json();
+
+      if (result.isCorrect) {
         setIsSolved(true);
         setMessage('✅ Correct! Redirecting...');
         setTimeout(() => router.push('/next-stage'), 2000);
@@ -46,6 +42,7 @@ export default function CTFChallenge() {
         setMessage(`❌ Incorrect. Attempts left: ${3 - attempts}`);
       }
     } catch (error) {
+      console.error('Verification error:', error);
       setMessage('🔧 Technical error. Try again.');
     }
   };
@@ -67,7 +64,7 @@ export default function CTFChallenge() {
             className="absolute bg-white rounded-full animate-pulse"
             style={{
               width: `${Math.random() * 2}px`,
-              height: `${Math.random() * 2}px`,
+              height: `${Math.random() * 2}px`, 
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
               opacity: Math.random() * 0.5 + 0.2,
@@ -84,12 +81,8 @@ export default function CTFChallenge() {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-3xl mx-auto bg-[#000012]/90 backdrop-blur-sm border-2 border-[rgba(255,77,140,0.3)] rounded-xl p-8 shadow-[0_0_30px_rgba(255,77,140,0.1)]"
         >
-         
-
           <div className="space-y-6 mb-8">
-            
-
-            <div className=" pt-6">
+            <div className="pt-6">
               {!isSolved ? (
                 <form onSubmit={checkAnswer} className="space-y-4">
                   <input
