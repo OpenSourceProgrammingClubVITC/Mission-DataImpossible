@@ -40,7 +40,7 @@ export default function FirstQuestion() {
             {/* Vertical Sidebar */}
             <div className="fixed right-0 top-0 h-full w-20 flex items-center justify-center p-6 z-10 text-white gap-8">
                 {/* Question Counter */}
-                <p className="mt-4 text-lg font-semibold">{currentQuestion} / {totalQuestions}</p>
+                <p className="mt-4 text-lg font-semibold">{currentQuestion} - {totalQuestions}</p>
                 {/* Progress Bar Container */}
                 <div className="flex flex-col items-center gap-2">
                     {[...Array(totalQuestions)].map((_, index) => (
@@ -55,7 +55,8 @@ export default function FirstQuestion() {
             </div>
 
             <div className='flex flex-col items-center justify-center h-full p-20 z-20 gap-20'>
-                <Image src="/sampleqr.webp" width={400} height={400} alt={"firstquestion"}></Image>
+                
+                <Image src="/whatsappqr.png" width={400} height={400} alt={"firstquestion"}></Image>
                 <input
                     type="text"
                     value={text}

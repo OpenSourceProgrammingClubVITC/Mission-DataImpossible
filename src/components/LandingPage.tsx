@@ -21,7 +21,7 @@ const REGISTRATION_LINKS = {
 
 const START_MISSION_LINK = "\start";
 const SPONSOR_LINK = "https://channelise.in";
-const question1 = "firstquestion";
+const question1 = "questions/1";
 
 // Button component with optional onClick handler
 interface GlowButtonProps {
