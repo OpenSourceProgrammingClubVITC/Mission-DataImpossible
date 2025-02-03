@@ -1,9 +1,9 @@
 "use client";
 
-import { questionTwo } from "@/server/actions";
+import { questionOne, recordFirst } from "@/server/actions";
 import { IBM_Plex_Mono } from "next/font/google";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 
 const roboto = IBM_Plex_Mono({
@@ -11,10 +11,10 @@ const roboto = IBM_Plex_Mono({
   subsets: ["latin"],
 });
 
-export default function Q2() {
+export default function Q1() {
+  console.log("suck");
   const [text, setText] = useState("");
-
-  const currentQuestion = 2;
+  const currentQuestion = 1;
   const totalQuestions = 4;
   const { user } = useUser();
 
@@ -22,6 +22,9 @@ export default function Q2() {
   if (user?.username !== null && user?.username !== undefined) {
     username = user?.username;
   }
+  useEffect(() => {
+    recordFirst("q1", username);
+  });
 
   return (
     <div
@@ -65,43 +68,25 @@ export default function Q2() {
         </div>
       </div>
 
-      <div className="text-white flex flex-col gap-10 justify-center items-center min-h-screen z-20">
-        <p className="text-3xl font-bold">GUESS THE MOVIE!!</p>
-        <div className="grid grid-cols-2 gap-7">
-          <Image
-            src="/Picture2.jpg"
-            width={200}
-            height={200}
-            alt={"secondquestion"}
-          ></Image>
-          <Image
-            src="/Picture3.jpg"
-            width={200}
-            height={200}
-            alt={"secondquestion"}
-          ></Image>
-          <Image
-            src="/Picture4.jpg"
-            width={200}
-            height={200}
-            alt={"secondquestion"}
-          ></Image>
-          <Image
-            src="/Picture5.jpg"
-            width={200}
-            height={200}
-            alt={"secondquestion"}
-          ></Image>
-        </div>
+      <div className="flex flex-col items-center justify-center h-full p-20 z-20 gap-10">
+        <p className="text-white text-3xl font-bold">
+          Scan the QR code to get the Hints and Find the answer
+        </p>
+        <Image
+          src="/whatsappqr.png"
+          width={400}
+          height={400}
+          alt={"firstquestion"}
+        ></Image>
         <input
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Enter Your Answer Here..."
-          className="w-[50%] border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-violet-900 text-black"
+          className="w-[50%] border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-violet-900"
           onKeyDown={async (e) => {
             if (e.key === "Enter") {
-              const status = await questionTwo(text, username);
+              const status = await questionOne(text, username);
               setText("");
               if (status === "wrong") {
                 alert("Wrong Answer! Try Again!");
@@ -110,6 +95,7 @@ export default function Q2() {
           }}
         />
       </div>
+      <div></div>
     </div>
   );
 }

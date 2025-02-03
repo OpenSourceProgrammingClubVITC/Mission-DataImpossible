@@ -1,14 +1,21 @@
 "use client";
 import { questionTwoB } from "@/server/actions";
+import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 import { JigsawPuzzle } from "react-jigsaw-puzzle/lib";
 import "react-jigsaw-puzzle/lib/jigsaw-puzzle.css";
 
 export default function SecondQuestion() {
   const [text, setText] = useState("");
-  
+
   const currentQuestion = 2;
   const totalQuestions = 4;
+  const { user } = useUser();
+
+  let username: string;
+  if (user?.username !== null && user?.username !== undefined) {
+    username = user?.username;
+  }
 
   return (
     <div
@@ -68,7 +75,7 @@ export default function SecondQuestion() {
           className="w-[50%] border z-10 border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-violet-900"
           onKeyDown={async (e) => {
             if (e.key === "Enter") {
-              const status = await questionTwoB(text);
+              const status = await questionTwoB(text, username);
               setText("");
               if (status === "wrong") {
                 alert("Wrong Answer! Try Again!");
