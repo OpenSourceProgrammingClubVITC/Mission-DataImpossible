@@ -1,5 +1,6 @@
 "use client";
 
+import { questionTwo } from "@/server/actions";
 import { IBM_Plex_Mono } from "next/font/google";
 import Image from "next/image";
 import { useState } from "react";
@@ -90,7 +91,16 @@ export default function Q2() {
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Enter Your Answer Here..."
-          className="w-[50%] border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-violet-900"
+          className="w-[50%] border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-violet-900 text-black"
+          onKeyDown={async (e) => {
+            if (e.key === "Enter") {
+              const status = await questionTwo(text);
+              setText("");
+              if (status === "wrong") {
+                alert("Wrong Answer! Try Again!");
+              }
+            }
+          }}
         />
       </div>
     </div>

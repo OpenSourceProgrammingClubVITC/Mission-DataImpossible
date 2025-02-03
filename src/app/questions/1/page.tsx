@@ -1,6 +1,6 @@
 "use client";
 
-import questionOne from "@/server/actions";
+import { questionOne } from "@/server/actions";
 import { IBM_Plex_Mono } from "next/font/google";
 import Image from "next/image";
 import { useState } from "react";
