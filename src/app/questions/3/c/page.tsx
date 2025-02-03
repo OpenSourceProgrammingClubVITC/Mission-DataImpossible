@@ -2,7 +2,6 @@
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { MultiStepLoaderDemo } from '@/components/loadingstates';
 import { SparklesPreview } from '@/components/SparklesPreview';
 
 export function Input() {

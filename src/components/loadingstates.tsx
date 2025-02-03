@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { MultiStepLoader as Loader } from "./ui/multi-step-loader";
-import { IconSquareRoundedX } from "@tabler/icons-react";
 
 const loadingStates = [
   {
@@ -49,7 +48,6 @@ export function MultiStepLoaderDemo() {
           className="fixed top-4 right-4 text-black dark:text-white z-[120]"
           onClick={() => setLoading(false)}
         >
-          <IconSquareRoundedX className="h-10 w-10" />
         </button>
       )}
     </div>

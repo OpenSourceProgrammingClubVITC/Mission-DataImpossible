@@ -3,7 +3,7 @@ import { SignedIn, UserButton } from '@clerk/nextjs';
 import { IBM_Plex_Mono } from 'next/font/google';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import CTFChallenge from "./ctf";
+import CTFChallenge from "../questions/4/page";
 
 const roboto = IBM_Plex_Mono({
   weight: '400',
