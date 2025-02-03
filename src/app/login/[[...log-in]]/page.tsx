@@ -46,16 +46,17 @@ export default function SignInPage() {
             
             {/* Sign In Container */}
             <div className="flex flex-col items-center justify-center bg-white p-8 rounded-xl shadow-xl space-y-6 mx-auto">
-  <h3 className="text-2xl text-black font-semibold">OSPC X IEEE RAS</h3>
-    <SignIn
-      appearance={{
-        elements: {
-          headerTitle: "hidden",
-          headerSubtitle: "hidden",
-        },
-      }}
-    />
-</div>
+              <h3 className="text-2xl text-black font-semibold">OSPC X IEEE RAS</h3>
+              <SignIn
+                afterSignInUrl="/questions" // Move the afterSignInUrl here
+                appearance={{
+                  elements: {
+                    headerTitle: "hidden",
+                    headerSubtitle: "hidden",
+                  },
+                }}
+              />
+            </div>
 
           </div>
         </div>

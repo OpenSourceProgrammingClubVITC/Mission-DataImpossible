@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 export default function CTFChallenge() {
   const router = useRouter();
@@ -14,7 +13,7 @@ export default function CTFChallenge() {
   // Hidden in HTML source
   const hiddenImageLink = (
     <div className="hidden" aria-hidden="true">
-      <Image src="https://qzxhebimyetidvoydcew.supabase.co/storage/v1/object/public/event//imageQ4.jpg" alt="Image" />
+      <img src="https://qzxhebimyetidvoydcew.supabase.co/storage/v1/object/public/event//imageQ4.jpg" alt="Image" />
     </div>
   );
 
