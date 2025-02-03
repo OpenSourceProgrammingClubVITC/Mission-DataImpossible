@@ -21,6 +21,7 @@ const REGISTRATION_LINKS = {
 
 const START_MISSION_LINK = "\start";
 const SPONSOR_LINK = "https://channelise.in";
+const question1 = "questions/1";
 
 // Button component with optional onClick handler
 interface GlowButtonProps {
@@ -144,6 +145,7 @@ export default function LandingPage() {
           <div className="flex gap-3 sm:gap-5">
             <GlowButton onClick={handleRegisterClick}>Register Now</GlowButton>
             <GlowButton href={START_MISSION_LINK}>Start Mission</GlowButton>
+            <GlowButton href={question1}>Start Mission</GlowButton>
           </div>
         </div>
       </nav>
