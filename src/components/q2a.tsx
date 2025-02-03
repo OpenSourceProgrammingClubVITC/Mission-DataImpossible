@@ -3,6 +3,7 @@ import { questionTwoB } from "@/server/actions";
 import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 import { JigsawPuzzle } from "react-jigsaw-puzzle/lib";
+
 import "react-jigsaw-puzzle/lib/jigsaw-puzzle.css";
 
 export default function SecondQuestion() {
