@@ -57,7 +57,8 @@ export default function FirstQuestion() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center h-full p-20 z-20 gap-20">
+      <div className="flex flex-col items-center justify-center h-full p-20 z-20 gap-10">
+        <p className="text-white text-3xl font-bold">Scan the QR code to get the Hints and Find the answer</p>
         <Image
           src="/whatsappqr.png"
           width={400}

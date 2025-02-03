@@ -6,7 +6,7 @@ import "react-jigsaw-puzzle/lib/jigsaw-puzzle.css";
 
 export default function SecondQuestion() {
   const [text, setText] = useState("");
-
+  
   const currentQuestion = 2;
   const totalQuestions = 4;
 
@@ -35,7 +35,7 @@ export default function SecondQuestion() {
       <div className="fixed right-0 top-0 h-full w-20 flex items-center justify-center p-6 z-10 text-white gap-8">
         {/* Question Counter */}
         <p className="mt-4 text-lg font-semibold">
-          {currentQuestion} - {totalQuestions}
+          {currentQuestion} b - {totalQuestions}
         </p>
         {/* Progress Bar Container */}
         <div className="flex flex-col items-center gap-2">
@@ -50,10 +50,10 @@ export default function SecondQuestion() {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center gap-10 ">
-        <p className="text-white text-4xl font-bold">GUESS THE WORD!!</p>
+        <p className="text-white text-4xl font-bold">Find THE WORD!!</p>
         <div className="w-[600px] border-2 border-white p-9">
           <JigsawPuzzle
-            imageSrc="/picture3.jpg"
+            imageSrc="https://ruxpkor5y4.ufs.sh/f/4UBwEBFjbtgUmPsyqvXDQnMNiREwI9vJfqdZLTBF26ClHt3c"
             rows={6}
             columns={4}
             onSolved={() => alert("Solved!")}

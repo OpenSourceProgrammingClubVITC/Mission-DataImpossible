@@ -59,7 +59,9 @@ export default function Q2() {
       </div>
 
       <div className="text-white flex flex-col gap-10 justify-center items-center min-h-screen z-20">
-        GUESS THE MOVIE!!
+        <p className="text-3xl font-bold">
+          GUESS THE MOVIE!!
+          </p>
         <div className="grid grid-cols-2 gap-7">
           <Image
             src="/Picture2.jpg"
