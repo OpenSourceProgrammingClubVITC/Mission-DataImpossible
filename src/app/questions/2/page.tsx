@@ -60,11 +60,10 @@ export default function SecondQuestion() {
                 GUESS THE MOVIE!!
 
                 <div className='grid grid-cols-2 gap-7'>
-                    <Image src="/whatsappqr.png" width={200} height={200} alt={"secondquestion"}></Image>
-                    <Image src="/whatsappqr.png" width={200} height={200} alt={"secondquestion"}></Image>
-                    <Image src="/whatsappqr.png" width={200} height={200} alt={"secondquestion"}></Image>
-                    <Image src="/whatsappqr.png" width={200} height={200} alt={"secondquestion"}></Image>
-
+                    <Image src="/Picture2.jpg" width={200} height={200} alt={"secondquestion"}></Image>
+                    <Image src="/Picture3.jpg" width={200} height={200} alt={"secondquestion"}></Image>
+                    <Image src="/Picture4.jpg" width={200} height={200} alt={"secondquestion"}></Image>
+                    <Image src="/Picture5.jpg" width={200} height={200} alt={"secondquestion"}></Image>
                 </div>
                 <input
                     type="text"
