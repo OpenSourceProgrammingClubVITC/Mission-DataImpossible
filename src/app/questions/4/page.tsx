@@ -1,130 +1,108 @@
 "use client";
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-export default function CTFChallenge() {
-  const router = useRouter();
+export default function FirstClue() {
   const [answer, setAnswer] = useState('');
-  const [message, setMessage] = useState('');
-  const [attempts, setAttempts] = useState(0);
-  const [isSolved, setIsSolved] = useState(false);
+  const [error, setError] = useState('');
+  const [showHint, setShowHint] = useState(false);
+  const router = useRouter();
 
-  // Hidden in HTML source
-  const hiddenImageLink = (
-    <div className="hidden" aria-hidden="true">
-      <img src="https://qzxhebimyetidvoydcew.supabase.co/storage/v1/object/public/event//imageQ4.jpg" alt="Image" />
-    </div>
-  );
-
-  const checkAnswer = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const normalizedAnswer = answer.trim().toLowerCase();
-
-    try {
-      const response = await fetch('/api/verify-answer', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ answer: normalizedAnswer }),
-      });
-
-      const result = await response.json();
-
-      if (result.isCorrect) {
-        setIsSolved(true);
-        setMessage('✅ Correct! Redirecting...');
-        setTimeout(() => router.push('/next-stage'), 2000);
-      } else {
-        setAttempts(prev => prev + 1);
-        setMessage(`❌ Incorrect. Attempts left: ${3 - attempts}`);
-      }
-    } catch (error) {
-      console.error('Verification error:', error);
-      setMessage('🔧 Technical error. Try again.');
+    // Validate the answer (case-insensitive trim)
+    const cleanedAnswer = answer.trim().toLowerCase();
+    
+    // The correct answer is the image link
+    const correctAnswer = 'https://ibb.co/nN46Kt2w';
+    
+    if (cleanedAnswer === correctAnswer) {
+      // Navigate to the specified route
+      router.push('/4/b');
+    } else {
+      // Show error message
+      setError('Incorrect. Keep investigating!');
     }
   };
 
-  useEffect(() => {
-    if (isSolved) {
-      const timer = setTimeout(() => router.push('/next-stage'), 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [isSolved, router]);
-
   return (
-    <div className="min-h-screen bg-[#000012] relative overflow-hidden">
-      {/* Stars Background */}
-      <div className="fixed w-full h-full animate-twinkle">
-        {[...Array(100)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute bg-white rounded-full animate-pulse"
-            style={{
-              width: `${Math.random() * 2}px`,
-              height: `${Math.random() * 2}px`, 
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.5 + 0.2,
-            }}
+    <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-4">
+      {/* Hidden link in source code */}
+      <div className="hidden">
+        <a href="https://ibb.co/nN46Kt2W">
+          <img 
+            src="https://i.ibb.co/xtwXrdv4/3tbw8p788e9vqaxwpq5jw6fs93.jpg" 
+            alt="x>x"  
           />
-        ))}
+        </a>
       </div>
 
-      {hiddenImageLink}
-
-      <main className="relative z-10 container mx-auto px-4 pt-32">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="max-w-3xl mx-auto bg-[#000012]/90 backdrop-blur-sm border-2 border-[rgba(255,77,140,0.3)] rounded-xl p-8 shadow-[0_0_30px_rgba(255,77,140,0.1)]"
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="text-center space-y-8 max-w-2xl w-full"
+      >
+        <motion.h1 
+          className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent"
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ duration: 2, repeat: Infinity }}
         >
-          <div className="space-y-6 mb-8">
-            <div className="pt-6">
-              {!isSolved ? (
-                <form onSubmit={checkAnswer} className="space-y-4">
-                  <input
-                    type="text"
-                    value={answer}
-                    onChange={(e) => setAnswer(e.target.value)}
-                    placeholder="📸🧑‍💻"
-                    className="w-full p-4 bg-[#000012] border-2 border-[rgba(255,77,140,0.3)] rounded-lg text-white
-                      focus:outline-none focus:border-[#FF758C] focus:shadow-[0_0_15px_rgba(255,77,140,0.2)]
-                      transition-all duration-200"
-                    required
-                  />
-                  <button
-                    type="submit"
-                    className="w-full py-3 bg-gradient-to-r from-[#FF1B1B] via-[#FF758C] to-[#5361FF] text-white rounded-lg
-                      hover:shadow-[0_0_25px_rgba(255,77,140,0.4)] transition-all duration-300 font-medium
-                      disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={attempts >= 3}
-                  >
-                    {attempts >= 3 ? 'Attempts Exhausted' : 'Submit Answer'}
-                  </button>
-                </form>
-              ) : (
-                <div className="text-center py-6">
-                  <div className="text-2xl text-green-400 mb-4">🎉 Challenge Solved!</div>
-                  <div className="text-white/80">Redirecting to next stage...</div>
-                </div>
-              )}
+          Search for the Source of Everything
+        </motion.h1>
 
-              {message && (
-                <div className={`text-center p-4 rounded-lg ${
-                  message.startsWith('✅') ? 'bg-green-900/20' : 'bg-red-900/20'
-                }`}>
-                  <span className={message.startsWith('✅') ? 'text-green-400' : 'text-red-400'}>
-                    {message}
-                  </span>
-                </div>
-              )}
+        <motion.div
+          className="text-gray-300 text-lg border-2 border-purple-500/30 p-6 rounded-xl backdrop-blur-sm"
+          initial={{ y: 50 }}
+          animate={{ y: 0 }}
+        >
+          <p className="mb-4">All Data has a variable X</p>
+          <p className="animate-pulse text-purple-400 mb-4"> 🧐 Inspect Everything</p>
+
+          <button 
+            onClick={() => setShowHint(!showHint)}
+            className="mb-4 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+          >
+            {showHint ? 'Hide Hint' : 'Show Hint'}
+          </button>
+
+          {showHint && (
+            <div className="bg-gray-800 p-3 rounded-lg mb-4 text-sm text-gray-300">
+              <p>💡 Hint: The answer is hidden in the source code's link attribute</p>
             </div>
-          </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <input 
+              type="text"
+              value={answer}
+              onChange={(e) => {
+                setAnswer(e.target.value);
+                setError(''); // Clear error when user starts typing
+              }}
+              placeholder="Enter the hidden 🔗..."
+              className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg 
+                text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+            />
+
+            {error && (
+              <p className="text-red-400 text-sm animate-bounce">
+                {error}
+              </p>
+            )}
+
+            <button 
+              type="submit"
+              className="w-full p-3 bg-gradient-to-r from-purple-500 to-blue-600 
+                text-white rounded-lg hover:opacity-90 transition-opacity"
+            >
+              Submit
+            </button>
+          </form>
         </motion.div>
-      </main>
+      </motion.div>
     </div>
   );
 }
