@@ -9,6 +9,7 @@ import "react-jigsaw-puzzle/lib/jigsaw-puzzle.css";
 export default function SecondQuestion() {
   const [text, setText] = useState("");
 
+  const [isSolved, setIsSolved] = useState(false);
   const currentQuestion = 2;
   const totalQuestions = 4;
   const { user } = useUser();
@@ -20,7 +21,7 @@ export default function SecondQuestion() {
 
   return (
     <div
-      className={`min-h-screen bg-[#000012] relative overflow-hidden flex flex-col justify-center items-center`}
+      className={`min-h-screen bg-[#000012] relative overflow-hidden flex flex-col justify-center items-center py-16`}
     >
       <div
         className="fixed w-full h-full animate-twinkle"
@@ -61,13 +62,23 @@ export default function SecondQuestion() {
         <p className="text-white text-4xl font-bold">Find THE WORD!!</p>
         <div className="w-[600px] border-2 border-white p-9">
           <JigsawPuzzle
-            imageSrc="https://ruxpkor5y4.ufs.sh/f/4UBwEBFjbtgUmPsyqvXDQnMNiREwI9vJfqdZLTBF26ClHt3c"
-            rows={6}
-            columns={4}
-            onSolved={() => alert("Solved!")}
+            imageSrc="https://ruxpkor5y4.ufs.sh/f/4UBwEBFjbtgUEkgWjepu8BrakG7UsJDLwpHRgfvF0WEOzh24"
+            rows={3}
+            columns={3}
+            onSolved={() => {
+              setTimeout(() => setIsSolved(true), 0);
+            }}
           />
         </div>
-
+        {isSolved ? (
+  <div>
+    <p className="text-white text-2xl font-semibold z-20">
+    https://drive.google.com/drive/folders/1-1we3bN9hcu0i3Gb6jHlDkhgnvV_u1A0
+    </p>
+  </div>
+):( 
+  <p className="text-white text-2xl font-semibold">Solve the puzzle to get the next clue</p>
+)}
         <input
           type="text"
           value={text}
