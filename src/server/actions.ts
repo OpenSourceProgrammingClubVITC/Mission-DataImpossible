@@ -74,7 +74,7 @@ export async function questionTwoB(answer: string, username: string) {
   const q2 = cookiesStore.get("question-2")?.value;
 
   if (q1 === "correct" && q2 === "correct") {
-    if (answer.toLowerCase() === "secondpart") {
+    if (answer.toLowerCase() === "justice rules") {
       await db
         .update(teamCtfTable)
         .set({

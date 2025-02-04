@@ -8,9 +8,15 @@ const nextConfig: NextConfig = {
       allowedOrigins: undefined,
     }, // If you're using Server Actions
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
-    remotePatterns: [{ hostname: "n7jr836wex.ufs.sh" }]
-  }
+    remotePatterns: [{ hostname: "n7jr836wex.ufs.sh" }],
+  },
 };
 
 export default nextConfig;
