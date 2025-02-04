@@ -16,7 +16,7 @@ export default clerkMiddleware(async (auth, req) => {
 
   // If the route is protected and the user is not signed in, redirect to sign-in
   if (!isPublicRoute(req) && !userId) {
-    return NextResponse.redirect("http://localhost:3000/login/");
+    return NextResponse.redirect("https://mdi.ieeeras.ospcvitc.club/login/");
   }
 
   return NextResponse.next(); // Allow the request to proceed
