@@ -98,7 +98,26 @@ export default function QuizPage({ children }: { children: React.ReactNode }) {
       </header>
 
       {/* Main content */}
-      <main>{children}</main>
+      <main>
+      <div
+        className="fixed w-full h-full z-10 animate-twinkle"
+        style={{
+          background: `
+            radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
+            radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+            radial-gradient(1.5px 1.5px at 50px 160px, #fff, rgba(0,0,0,0)),
+            radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0)),
+            radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
+            radial-gradient(1.5px 1.5px at 160px 120px, #fff, rgba(0,0,0,0)),
+            radial-gradient(1px 1px at 200px 150px, #fff, rgba(0,0,0,0)),
+            radial-gradient(2px 2px at 250px 220px, #fff, rgba(0,0,0,0))
+          `,
+          backgroundRepeat: "repeat",
+          backgroundSize: "400px 400px",
+        }}
+      />
+      {children}
+      </main>
     </div>
     
   );
