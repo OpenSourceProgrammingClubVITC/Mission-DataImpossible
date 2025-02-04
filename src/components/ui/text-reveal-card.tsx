@@ -99,7 +99,7 @@ export const TextRevealCard = ({
             }}
             className="text-base sm:text-[3rem] py-10 font-bold text-white bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300"
           >
-            {revealText}
+            playlist?list=PL7IHXcKVx7m4Z0l4T0oivapfC9t-p_Uad
           </p>
         </motion.div>
         <motion.div
