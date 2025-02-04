@@ -23,17 +23,13 @@ export default function SuccessPage() {
 
   const leads = [
     {
-      name: "person 1",
-      phone: "+91 12345 67890"
+      name: "Hariprasaadh",
+      phone: "+91 93428 56540"
     },
     {
-      name: "person 2",
-      phone: "+91 12345 67890"
+      name: "Dhilip",
+      phone: "+91 91500 23389"
     },
-    {
-      name: "person 3",
-      phone: "+91 12345 67890"
-    }
   ];
 
   useEffect(() => {
@@ -103,7 +99,7 @@ export default function SuccessPage() {
         <DialogContent className="bg-[#000012] border-2 border-[rgba(255,77,140,0.3)] text-white max-w-md">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-center mb-4 bg-gradient-to-r from-[#FF1B1B] via-[#FF758C] to-[#5361FF] bg-clip-text text-transparent">
-              Event Leads
+              Contact Leads
             </DialogTitle>
             
           </DialogHeader>
@@ -150,7 +146,7 @@ export default function SuccessPage() {
             className="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-[#ffb5b4]  to-[#ffebc7] 
             text-black rounded-full hover:scale-105 transition-transform"
           >
-            🚀Colletc Dataset🚀
+            🚀Collect Dataset🚀
           </button>
 
           <Link 
