@@ -1,12 +1,12 @@
 "use client";
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useRef, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { Lock, CheckCircle, XCircle, Info } from 'lucide-react';
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { Lock, CheckCircle, XCircle, Info } from "lucide-react";
 
 export default function EnhancedCTFChallenge() {
-  const [answer, setAnswer] = useState('');
-  const [error, setError] = useState('');
+  const [answer, setAnswer] = useState("");
+  const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [attempts, setAttempts] = useState(0);
@@ -14,7 +14,7 @@ export default function EnhancedCTFChallenge() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Secure method to store and retrieve the correct answer
-  const correctAnswer = process.env.NEXT_PUBLIC_CTF_CHALLENGE_ANSWER_4 ;
+  const correctAnswer = process.env.NEXT_PUBLIC_CTF_CHALLENGE_ANSWER_4;
 
   useEffect(() => {
     // Focus input on component mount
@@ -24,14 +24,14 @@ export default function EnhancedCTFChallenge() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setAttempts(prev => prev + 1);
-    
+    setAttempts((prev) => prev + 1);
+
     setTimeout(() => {
       if (answer.trim() === correctAnswer) {
-        router.push('/success');
+        router.push("/success");
       } else {
-        setError('Incorrect answer. Keep investigating!');
-        
+        setError("Incorrect answer. Keep investigating!");
+
         // Implement progressive difficulty
         if (attempts >= 2) {
           setShowHint(true);
@@ -42,21 +42,21 @@ export default function EnhancedCTFChallenge() {
   };
 
   const backgroundVariants = {
-    initial: { 
-      background: 'linear-gradient(135deg, #111827, #1F2937)' 
+    initial: {
+      background: "linear-gradient(135deg, #111827, #1F2937)",
     },
-    shake: { 
+    shake: {
       background: [
-        'linear-gradient(135deg, #111827, #1F2937)',
-        'linear-gradient(135deg, #3B0764, #4B0082)',
-        'linear-gradient(135deg, #111827, #1F2937)'
+        "linear-gradient(135deg, #111827, #1F2937)",
+        "linear-gradient(135deg, #3B0764, #4B0082)",
+        "linear-gradient(135deg, #111827, #1F2937)",
       ],
-      transition: { duration: 0.5 }
-    }
+      transition: { duration: 0.5 },
+    },
   };
 
   return (
-    <motion.div 
+    <motion.div
       initial="initial"
       animate={error ? "shake" : "initial"}
       variants={backgroundVariants}
@@ -69,21 +69,23 @@ export default function EnhancedCTFChallenge() {
           className="text-center"
         >
           <h1 className="text-4xl font-bold  mb-4">
-          📅 
+            📅
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
-             EXIF  Investigation  
+              EXIF Investigation
             </span>
           </h1>
-          <p className="text-gray-400 mb-6">Decode the hidden clue to progress</p>
+          <p className="text-gray-400 mb-6">
+            Decode the hidden clue to progress
+          </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="bg-gray-800/60 border border-gray-700/50 rounded-xl shadow-2xl p-6"
         >
           <div className="mb-6">
-            <img 
+            <img
               src="https://i.ibb.co/nN46Kt2W/ctf-image.jpg"
               alt="CTF Challenge"
               className="w-full rounded-lg shadow-lg border-2 border-gray-700"
@@ -111,13 +113,16 @@ export default function EnhancedCTFChallenge() {
                   value={answer}
                   onChange={(e) => {
                     setAnswer(e.target.value);
-                    setError('');
+                    setError("");
                   }}
                   className="w-full p-3 pl-10 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white 
                     focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                   placeholder="Enter the discovered key"
                 />
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                <Lock
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  size={20}
+                />
               </div>
 
               <AnimatePresence>
@@ -137,7 +142,7 @@ export default function EnhancedCTFChallenge() {
 
             <button
               type="submit"
-              disabled={isSubmitting || answer.trim() === ''}
+              disabled={isSubmitting || answer.trim() === ""}
               className="w-full p-3 rounded-lg 
                 bg-gradient-to-r from-purple-600 to-pink-500 
                 text-white font-bold
@@ -152,7 +157,7 @@ export default function EnhancedCTFChallenge() {
                   Verifying...
                 </>
               ) : (
-                'Submit Answer'
+                "Submit Answer"
               )}
             </button>
           </form>
@@ -161,11 +166,11 @@ export default function EnhancedCTFChallenge() {
             {showHint && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
+                animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
                 className="mt-4 bg-gray-700/50 p-3 rounded-lg text-gray-300 text-sm"
               >
-                <strong>Hint -</strong> Look closely at the image metadata. The key might be related to a specific date or timestamp.
+                The difference between creation and modification dates
               </motion.div>
             )}
           </AnimatePresence>
