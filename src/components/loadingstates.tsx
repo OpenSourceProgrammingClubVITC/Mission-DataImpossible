@@ -48,6 +48,7 @@ export function MultiStepLoaderDemo() {
           className="fixed top-4 right-4 text-black dark:text-white z-[120]"
           onClick={() => setLoading(false)}
         >
+          X
         </button>
       )}
     </div>

@@ -5,18 +5,17 @@ import { motion } from 'framer-motion';
 import { TextRevealCardPreview } from '@/components/TextRevealCardPreview';
 import { SVGMaskEffectDemo } from '@/components/SVGMaskEffectDemo';
 
-
-export function Input() {
+const Input = () => {
  const [answer, setAnswer] = useState('');
  const [error, setError] = useState('');
  const router = useRouter();
- const correctAnswer = process.env.NEXT_PUBLIC_CORRECT_ANSWERR;
+ const correctAnswer = process.env.NEXT_PUBLIC_CORRECT_ANSWER;
 
  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
    e.preventDefault();
    
    if (answer.trim().toLowerCase() === correctAnswer?.toLowerCase()) {
-     router.push('/questionnn');
+     router.push('/questions/3/b');
    } else {
      setError('Incorrect answer');
    }
@@ -40,8 +39,9 @@ export function Input() {
      </button>
    </form>
  );
- }
-export default function Question() {
+};
+
+const QuestionPage = () => {
   return (
     <div className="bg-gray-900 min-h-screen flex flex-col items-center justify-center p-4 space-y-6">
       <motion.div 
@@ -74,4 +74,6 @@ export default function Question() {
       <Input />
     </div>
   );
-}
+};
+
+export default QuestionPage;

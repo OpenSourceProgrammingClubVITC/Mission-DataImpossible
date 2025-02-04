@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { IBM_Plex_Mono } from 'next/font/google';
 import Link from 'next/link';
-import { Check, Trophy, Home } from 'lucide-react';
+import {  Trophy, Home } from 'lucide-react';
 import { 
   Dialog, 
   DialogContent, 
   DialogHeader, 
   DialogTitle, 
-  DialogDescription 
+
 } from "@/components/ui/dialog";
 
 const roboto = IBM_Plex_Mono({

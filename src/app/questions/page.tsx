@@ -12,7 +12,7 @@ export default function LandingPage() {
   return (
     <div className={`min-h-screen bg-[#000012] relative overflow-hidden flex flex-col ${roboto.className}`}>
       <Head>
-        <title>Mission: Data Impossible</title>
+        <title>Mission - Data Impossible</title>
         <meta name="description" content="AI/ML Data Challenge" />
       </Head>
 

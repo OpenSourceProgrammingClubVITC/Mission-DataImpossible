@@ -4,17 +4,17 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { SparklesPreview } from '@/components/SparklesPreview';
 
-export function Input() {
+const Input = () => {
  const [answer, setAnswer] = useState('');
  const [error, setError] = useState('');
  const router = useRouter();
- const correctAnswer = process.env.NEXT_PUBLIC_CORRECT_ANSWERR;
+ const correctAnswer = process.env.NEXT_PUBLIC_CORRECT_ANSWERRR;
 
  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
    e.preventDefault();
    
    if (answer.trim().toLowerCase() === correctAnswer?.toLowerCase()) {
-     router.push('/questionnn');
+     router.push('/questions/4');
    } else {
      setError('Incorrect answer');
    }
@@ -38,8 +38,9 @@ export function Input() {
      </button>
    </form>
  );
-}
-export default function question()  {
+};
+
+const QuestionPage = () => {
   return (
     <div className="bg-gray-900 min-h-screen flex flex-col items-center justify-center p-4 space-y-6">
         <motion.div 
@@ -66,10 +67,10 @@ export default function question()  {
           Here come the next Mystery 
         </motion.div>
       </motion.div>
-
       <SparklesPreview />
       <Input />
     </div>
   )
-}
+};
 
+export default QuestionPage;

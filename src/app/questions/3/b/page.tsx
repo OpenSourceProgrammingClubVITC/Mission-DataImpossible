@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { MultiStepLoaderDemo } from '@/components/loadingstates';
 
-export function Input() {
+const Input = () => {
  const [answer, setAnswer] = useState('');
  const [error, setError] = useState('');
  const router = useRouter();
@@ -14,7 +14,7 @@ export function Input() {
    e.preventDefault();
    
    if (answer.trim().toLowerCase() === correctAnswer?.toLowerCase()) {
-     router.push('/questionnn');
+     router.push('/questions/3/c');
    } else {
      setError('Incorrect answer');
    }
@@ -38,8 +38,9 @@ export function Input() {
      </button>
    </form>
  );
-}
-export default function question()  {
+};
+
+const QuestionPage = () => {
   return (
     <div className="bg-gray-900 min-h-screen flex flex-col items-center justify-center p-4 space-y-6">
         <motion.div 
@@ -71,5 +72,6 @@ export default function question()  {
       <Input />
     </div>
   )
-}
+};
 
+export default QuestionPage;

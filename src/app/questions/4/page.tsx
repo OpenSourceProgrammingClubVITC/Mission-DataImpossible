@@ -70,7 +70,7 @@ export default function FirstClue() {
 
           {showHint && (
             <div className="bg-gray-800 p-3 rounded-lg mb-4 text-sm text-gray-300">
-              <p>💡 Hint: The answer is hidden in the source code's link attribute</p>
+              <p>💡 Hint: The answer is hidden in the source code link attribute</p>
             </div>
           )}
 

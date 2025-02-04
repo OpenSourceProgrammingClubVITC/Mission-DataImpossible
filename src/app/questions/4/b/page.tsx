@@ -165,7 +165,7 @@ export default function EnhancedCTFChallenge() {
                 exit={{ opacity: 0, height: 0 }}
                 className="mt-4 bg-gray-700/50 p-3 rounded-lg text-gray-300 text-sm"
               >
-                <strong>Hint:</strong> Look closely at the image's metadata. The key might be related to a specific date or timestamp.
+                <strong>Hint -</strong> Look closely at the image metadata. The key might be related to a specific date or timestamp.
               </motion.div>
             )}
           </AnimatePresence>
